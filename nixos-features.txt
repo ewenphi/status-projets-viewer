@@ -1,0 +1,37 @@
+- hm
+- docker
+- locate
+- zsh
+- firefox (pour pass mais dois marcher ootb outside nixos)
+- user ewen avec groups
+- hyprland et gnome
+- tokyo-night-sddm mais pas obligé
+- steam
+- bluetooth
+- prints
+- fonts : 
+      pkgs.nerd-fonts.droid-sans-mono
+      pkgs.nerd-fonts.jetbrains-mono
+      pkgs.noto-fonts-emoji-blob-bin
+      pkgs.jetbrains-mono
+      pkgs.fira-code
+      pkgs.source-code-pro
+      pkgs.font-awesome
+    ];
+    fonts.fontconfig.enable = true;
+- auto-optimise-store
+- nix-command et flakes
+- cachix uses
+- gc automatique
+
+      gc = {
+        automatic = true;
+        dates = "weekly";
+        persistent = true;
+        options = "--delete-older-than 30d";
+      };
+      extraOptions = ''
+        min-free = ${toString (1024 * 1024 * 1024)}
+        max-free = ${toString (10 * 1024 * 1024 * 1024)}
+      '';
+    nixpkgs.config.allowUnfree = true;
