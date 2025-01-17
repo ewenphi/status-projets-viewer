@@ -8,7 +8,7 @@
       },
       "locked": {
         "lastModified": 1,
-        "narHash": "sha256-9cSL8o/GttppHBOvKm1wsQJkwCmJLQVL9aef3F6+pHc=",
+        "narHash": "sha256-56b6aYhA1341R/jj5G7rSkYSHkTmpVdyhn/QYv/ok2w=",
         "path": "./packages/auto-updater",
         "type": "path"
       },
