@@ -17,7 +17,6 @@ in
 
     home.packages = [
 
-      pkgs.keepassxc
 
       pkgs.discord
       pkgs.bugdom
@@ -35,18 +34,10 @@ in
       pkgs.gimp
       pkgs.krita
 
-      pkgs.sweet
-
-      pkgs.pamixer
-
-      pkgs.python312Packages.matplotlib
-
-      pkgs.pika-backup
       pkgs.kdePackages.ark
       pkgs.baobab
       pkgs.gparted
       pkgs.eog
-      pkgs.timeshift
 
       pkgs.rofi-pass-wayland
       pkgs.nix-search
