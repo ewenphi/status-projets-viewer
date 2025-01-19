@@ -5,13 +5,19 @@
 
   config = lib.mkIf config.git.enable {
     home.packages = [
-      pkgs.git
       pkgs.gitoxide
     ];
 
-    programs.git.difftastic = {
+    programs.git = {
       enable = true;
-      color = "always";
+      ignores = [
+        "*~"
+        "*.swp"
+      ];
+      difftastic = {
+        enable = true;
+        color = "always";
+      };
     };
   };
 }
