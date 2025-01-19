@@ -48,6 +48,7 @@ in
       pkgs.quickemu
       pkgs.anytype
       (config.lib.nixGL.wrap pkgs.kitty)
+      (config.lib.nixGL.wrap pkgs.firefox)
     ];
 
     fonts.fontconfig.enable = true;

@@ -12,5 +12,6 @@
     ./retroarch.nix
     ./gnome.nix
     ./nvf.nix
+    ./nix-options.nix
   ];
 }

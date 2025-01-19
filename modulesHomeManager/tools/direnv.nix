@@ -1,4 +1,4 @@
-{ pkgs, lib, config, ... }: {
+{ lib, config, ... }: {
   #nix-direnv to auto nix develop
   options = {
     direnv.enable = lib.mkEnableOption "enable direnv module";
@@ -13,7 +13,5 @@
         hide_env_diff = true;
       };
     };
-    nix.extraOptions = "keep-outputs = true\nkeep-derivations = true\n";
-    nix.package = pkgs.nix;
   };
 }

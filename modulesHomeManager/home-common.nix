@@ -14,6 +14,7 @@
     base.enable = true;
     programs-oneliners-cli.enable = true;
     nvf.enable = true;
+    nix-options.enable = true;
     #fin custom modules
 
     targets.genericLinux.enable = true;
@@ -85,7 +86,5 @@
       };
     };
     programs.home-manager.enable = true;
-
-    nix.registry.nixpkgs.flake = inputs.nixpkgs;
   };
 }
