@@ -42,6 +42,7 @@ in
       pkgs.rofi-pass-wayland
       pkgs.nix-search
       pkgs.godot_4
+      pkgs.comma
 
       pkgs.mate.atril
       myTexLive
