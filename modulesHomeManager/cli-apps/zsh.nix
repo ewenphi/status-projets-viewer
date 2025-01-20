@@ -15,9 +15,6 @@
       zoxide.enable = true;
       zoxide.enableZshIntegration = true;
 
-
-      nix-your-shell.enable = true;
-
       zsh = {
         enable = true;
         oh-my-zsh = {
