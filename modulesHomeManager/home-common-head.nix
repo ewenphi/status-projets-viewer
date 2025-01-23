@@ -15,5 +15,7 @@
     programs-head-oneliners.enable = true;
 
     gnome.enable = true;
+
+    stylix-module.enable = true;
   };
 }

@@ -16,10 +16,10 @@
     ];
     programs.gnome-shell = {
       enable = true;
-      theme = {
-        name = "Tokyonight-Dark";
-        package = pkgs.tokyonight-gtk-theme;
-      };
+      # theme = {
+      #   name = "Tokyonight-Dark";
+      #   package = pkgs.tokyonight-gtk-theme;
+      # };
       extensions = [
         { package = pkgs.gnomeExtensions.cronomix; }
 

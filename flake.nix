@@ -39,6 +39,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    stylix = {
+      url = "github:danth/stylix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     #perso nix
     auto-updater = {
       # url = "git+https://codeberg.org/Yvaniak/auto-updater";
