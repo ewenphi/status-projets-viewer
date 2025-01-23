@@ -170,7 +170,7 @@
       ts = {
         enable = true;
         extraDiagnostics.enable = false;
-        format.enable = false;
+        format.enable = true;
       };
       go.enable = true;
       lua.enable = true;
