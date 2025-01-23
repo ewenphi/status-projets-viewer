@@ -336,5 +336,11 @@
     comments = {
       comment-nvim.enable = true;
     };
+
+    mini = {
+      sessions.enable = true;
+      animate.enable = true;
+      indentscope.enable = true;
+    };
   };
 }
