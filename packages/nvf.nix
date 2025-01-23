@@ -144,6 +144,10 @@
       };
     };
 
+    options = {
+      tabstop = 4;
+    };
+
     # This section does not include a comprehensive list of available language modules.
     # To list all available language module options, please visit the nvf manual.;
     languages = {
