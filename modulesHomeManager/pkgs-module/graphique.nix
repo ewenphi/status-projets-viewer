@@ -49,6 +49,11 @@ in
       pkgs.quickemu
       pkgs.anytype
       pkgs.pdfpc
+
+      pkgs.docker
+      pkgs.docker-buildx
+      pkgs.nixpacks
+
       (config.lib.nixGL.wrap pkgs.kitty)
       (config.lib.nixGL.wrap pkgs.firefox)
     ];
