@@ -1,4 +1,4 @@
-{ pkgs, lib, config, ... }: {
+{ pkgs, lib, config, customNeovim, ... }: {
   options = {
     base.enable = lib.mkEnableOption "install base packages module";
   };
@@ -32,6 +32,7 @@
       pkgs.unzip
       pkgs.wl-clipboard
       pkgs.auto-updater
+      customNeovim.neovim
     ];
   };
 }

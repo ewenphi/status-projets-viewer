@@ -60,6 +60,16 @@
         };
 
         treefmtEval = inputs.treefmt-nix.lib.evalModule pkgs ./treefmt.nix;
+
+        configNvf = {
+          options = { };
+          config = import ./packages/nvf.nix { inherit pkgs; };
+        };
+
+        customNeovim = inputs.nvf.lib.neovimConfiguration {
+          inherit pkgs;
+          modules = [ configNvf ];
+        };
       in
       {
         formatter = treefmtEval.config.build.wrapper;
@@ -67,6 +77,8 @@
         checks = {
           formatting = treefmtEval.config.build.check self;
         };
+
+        packages.myNvim = customNeovim.neovim;
       }
 
       )
@@ -86,15 +98,25 @@
 
         overlays = [ overlay ];
       };
+
+      configNvf = {
+        options = { };
+        config = import ./packages/nvf.nix { inherit pkgs; };
+      };
+
+      customNeovim = inputs.nvf.lib.neovimConfiguration {
+        inherit pkgs;
+        modules = [ configNvf ];
+      };
     in
     {
-
       homeConfigurations = {
         ewen = inputs.home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
           extraSpecialArgs = {
             inherit inputs;
             inherit system;
+            inherit customNeovim;
           };
 
           modules = [

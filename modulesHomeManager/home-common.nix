@@ -1,6 +1,5 @@
 { config
 , lib
-, inputs
 , ...
 }: {
   options = {
@@ -13,7 +12,6 @@
     tools.enable = true;
     base.enable = true;
     programs-oneliners-cli.enable = true;
-    nvf.enable = true;
     nix-options.enable = true;
     #fin custom modules
 
