@@ -238,7 +238,6 @@
     autopairs.nvim-autopairs.enable = true;
 
     autocomplete.nvim-cmp.enable = true;
-    snippets.luasnip.enable = true;
     runner.run-nvim.enable = true;
 
     filetree = {
