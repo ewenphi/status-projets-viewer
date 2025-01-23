@@ -11,7 +11,6 @@
     ./home-common-head.nix
     ./retroarch.nix
     ./gnome.nix
-    ./nvf.nix
     ./nix-options.nix
   ];
 }
