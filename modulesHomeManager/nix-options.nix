@@ -1,8 +1,9 @@
-{ config
-, pkgs
-, inputs
-, lib
-, ...
+{
+  config,
+  pkgs,
+  inputs,
+  lib,
+  ...
 }: {
   options = {
     nix-options.enable = lib.mkEnableOption "enable my nix options module";
@@ -21,4 +22,3 @@
     };
   };
 }
-

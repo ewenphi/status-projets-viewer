@@ -1,4 +1,8 @@
-{ lib, config, ... }: {
+{
+  lib,
+  config,
+  ...
+}: {
   #nix-direnv to auto nix develop
   options = {
     direnv.enable = lib.mkEnableOption "enable direnv module";

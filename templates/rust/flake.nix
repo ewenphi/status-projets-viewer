@@ -9,14 +9,18 @@
     naersk.url = "github:nix-community/naersk";
   };
 
-  outputs = { self, nixpkgs, ... }@inputs:
-    inputs.flake-utils.lib.eachDefaultSystem (system:
-      let
+  outputs = {
+    self,
+    nixpkgs,
+    ...
+  } @ inputs:
+    inputs.flake-utils.lib.eachDefaultSystem (
+      system: let
         pkgs = import nixpkgs {
           inherit system;
         };
 
-        naersk' = pkgs.callPackage inputs.naersk { };
+        naersk' = pkgs.callPackage inputs.naersk {};
 
         mylib = {
           fmt = pkgs.writeShellApplication {
@@ -46,12 +50,11 @@
             '';
           };
         };
-      in
-      {
+      in {
         formatter.pkgs = pkgs.nixpkgs-fmt;
 
         devShells.default = pkgs.mkShell {
-          inputsFrom = [ self.packages.${pkgs.system}.default ];
+          inputsFrom = [self.packages.${pkgs.system}.default];
           packages = [
             #voir la taille des grosses deps
             pkgs.cargo-bloat
@@ -90,7 +93,7 @@
 
         packages = {
           default = naersk'.buildPackage {
-            nativeBuildInputs = [ pkgs.rustc pkgs.cargo ];
+            nativeBuildInputs = [pkgs.rustc pkgs.cargo];
 
             src = ./.;
 
@@ -99,20 +102,17 @@
             meta = with pkgs.stdenv.lib; {
               homepage = "a remplir";
               licence = licences.MIT; #à remplir
-              mainteners = [ mainteners.yvaniak ]; #a remplir
+              mainteners = [mainteners.yvaniak]; #a remplir
             };
           };
 
           remplir = self.packages.${pkgs.system}.default;
 
-
           docker = pkgs.dockerTools.buildLayeredImage {
             name = "remplir";
             tag = "latest";
-            config.Cmd = [ "${self.packages.${pkgs.system}.default}/bin/remplir" ];
+            config.Cmd = ["${self.packages.${pkgs.system}.default}/bin/remplir"];
           };
-
-
         };
       }
     );

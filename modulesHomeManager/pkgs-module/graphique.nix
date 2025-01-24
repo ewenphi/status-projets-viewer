@@ -1,9 +1,13 @@
-{ pkgs, lib, config, inputs, ... }:
-let
-  myTexLive =
-    pkgs.texliveFull.withPackages (ps: with ps; [ movie15 ]);
-in
 {
+  pkgs,
+  lib,
+  config,
+  inputs,
+  ...
+}: let
+  myTexLive =
+    pkgs.texliveFull.withPackages (ps: with ps; [movie15]);
+in {
   options = {
     graphique.enable = lib.mkEnableOption "install graphic packages module";
   };
@@ -12,12 +16,10 @@ in
     nixGL = {
       inherit (inputs.nixgl) packages;
       defaultWrapper = "mesa";
-      installScripts = [ "mesa" ];
+      installScripts = ["mesa"];
     };
 
     home.packages = [
-
-
       pkgs.discord
       pkgs.bugdom
       pkgs.dolphin-emu

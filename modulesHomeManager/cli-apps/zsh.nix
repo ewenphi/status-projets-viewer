@@ -1,17 +1,16 @@
-{ pkgs
-, lib
-, config
-, ...
+{
+  pkgs,
+  lib,
+  config,
+  ...
 }: {
   options = {
     zsh.enable = lib.mkEnableOption "enable zsh module";
   };
 
   config = lib.mkIf config.zsh.enable {
-    home.packages = [ pkgs.pokemon-colorscripts-mac ];
+    home.packages = [pkgs.pokemon-colorscripts-mac];
     programs = {
-
-
       zoxide.enable = true;
       zoxide.enableZshIntegration = true;
 
@@ -29,12 +28,12 @@
 
         initExtra = ''
 
-        # Use vim bindings.
-        set -o vi
+          # Use vim bindings.
+          set -o vi
 
 
-        pokemon-colorscripts -r
-      '';
+          pokemon-colorscripts -r
+        '';
 
         sessionVariables = {
           FLAKE = "/home/$USER/home-config";

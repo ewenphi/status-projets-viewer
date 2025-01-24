@@ -1,6 +1,7 @@
-{ lib
-, config
-, ...
+{
+  lib,
+  config,
+  ...
 }: {
   options = {
     home-common-head.enable = lib.mkEnableOption "enable home-common-head bundle module";

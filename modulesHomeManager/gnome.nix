@@ -1,7 +1,8 @@
-{ config
-, pkgs
-, lib
-, ...
+{
+  config,
+  pkgs,
+  lib,
+  ...
 }: {
   options = {
     gnome.enable = lib.mkEnableOption "enable gnome customisation module";
@@ -21,22 +22,21 @@
       #   package = pkgs.tokyonight-gtk-theme;
       # };
       extensions = [
-        { package = pkgs.gnomeExtensions.cronomix; }
+        {package = pkgs.gnomeExtensions.cronomix;}
 
-        { package = pkgs.gnomeExtensions.paperwm; }
-        { package = pkgs.gnomeExtensions.auto-screen-brightness; }
-        { package = pkgs.gnomeExtensions.auto-power-profile; }
+        {package = pkgs.gnomeExtensions.paperwm;}
+        {package = pkgs.gnomeExtensions.auto-screen-brightness;}
+        {package = pkgs.gnomeExtensions.auto-power-profile;}
 
-        { package = pkgs.gnomeExtensions.appindicator; }
-        { package = pkgs.gnomeExtensions.thinkpad-battery-threshold; }
-        { package = pkgs.gnomeExtensions.systemd-status; }
-        { package = pkgs.gnomeExtensions.github-actions; }
+        {package = pkgs.gnomeExtensions.appindicator;}
+        {package = pkgs.gnomeExtensions.thinkpad-battery-threshold;}
+        {package = pkgs.gnomeExtensions.systemd-status;}
+        {package = pkgs.gnomeExtensions.github-actions;}
 
-        { package = pkgs.gnomeExtensions.open-bar; }
-        { package = pkgs.gnomeExtensions.just-perfection; }
-        { package = pkgs.gnomeExtensions.another-window-session-manager; }
-        { package = pkgs.gnomeExtensions.astra-monitor; }
-
+        {package = pkgs.gnomeExtensions.open-bar;}
+        {package = pkgs.gnomeExtensions.just-perfection;}
+        {package = pkgs.gnomeExtensions.another-window-session-manager;}
+        {package = pkgs.gnomeExtensions.astra-monitor;}
       ];
     };
 
@@ -44,7 +44,7 @@
       enable = true;
       settings = {
         "org/gnome/shell" = {
-          favorite-apps = [ "firefox.desktop" "kitty.desktop" "nemo.desktop" "thunderbird.desktop" ];
+          favorite-apps = ["firefox.desktop" "kitty.desktop" "nemo.desktop" "thunderbird.desktop"];
         };
 
         "org/gnome/desktop/interface" = {
@@ -53,18 +53,18 @@
         };
 
         "org/gnome/shell/keybindings" = {
-          toggle-quick-settings = [ "<Super>m" ];
+          toggle-quick-settings = ["<Super>m"];
         };
 
         "org/gnome/shell/extensions/paperwm/keybindings" = {
-          toggle-maximise-width = [ "<Super>s" ];
-          toggle-top-bar = [ "<Super>b" ];
-          toggle-position-bar = [ ];
+          toggle-maximise-width = ["<Super>s"];
+          toggle-top-bar = ["<Super>b"];
+          toggle-position-bar = [];
         };
 
         "org/gnome/settings-daemon/plugins/media-keys" = {
-          email = [ "<Super><Shift>t" ];
-          www = [ "<Super>f" ];
+          email = ["<Super><Shift>t"];
+          www = ["<Super>f"];
           custom-keybindings = [
             "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/"
             "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/"
@@ -120,10 +120,7 @@
           startup-status = 0;
           clock-menu-position = 2;
         };
-
-
       };
     };
   };
 }
-

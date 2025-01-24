@@ -1,6 +1,7 @@
-{ config
-, lib
-, ...
+{
+  config,
+  lib,
+  ...
 }: {
   options = {
     home-common.enable = lib.mkEnableOption "enable home-common bundle module";
@@ -17,7 +18,6 @@
 
     targets.genericLinux.enable = true;
     home = {
-
       username = "ewen";
       homeDirectory = "/home/ewen";
 

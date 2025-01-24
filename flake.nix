@@ -52,14 +52,14 @@
     };
   };
 
-  outputs =
-    { self
-    , nixpkgs
-    , ...
-    } @ inputs:
+  outputs = {
+    self,
+    nixpkgs,
+    ...
+  } @ inputs:
     inputs.flake-utils.lib.eachDefaultSystem
-      (system:
-      let
+    (
+      system: let
         pkgs = import nixpkgs {
           inherit system;
         };
@@ -67,16 +67,15 @@
         treefmtEval = inputs.treefmt-nix.lib.evalModule pkgs ./treefmt.nix;
 
         configNvf = {
-          options = { };
-          config = import ./packages/nvf.nix { inherit pkgs; };
+          options = {};
+          config = import ./packages/nvf.nix {inherit pkgs;};
         };
 
         customNeovim = inputs.nvf.lib.neovimConfiguration {
           inherit pkgs;
-          modules = [ configNvf ];
+          modules = [configNvf];
         };
-      in
-      {
+      in {
         formatter = treefmtEval.config.build.wrapper;
 
         checks = {
@@ -85,10 +84,8 @@
 
         packages.myNvim = customNeovim.neovim;
       }
-
-      )
-    // inputs.flake-utils.lib.eachDefaultSystemPassThrough (system:
-    let
+    )
+    // inputs.flake-utils.lib.eachDefaultSystemPassThrough (system: let
       overlay = _final: _prev: {
         inherit (inputs.nixpkgs-godot4-1.legacyPackages.${pkgs.system}) godot_4;
         nix-search = inputs.nix-search.packages.${pkgs.system}.default;
@@ -101,20 +98,19 @@
           allowUnfree = true;
         };
 
-        overlays = [ overlay ];
+        overlays = [overlay];
       };
 
       configNvf = {
-        options = { };
-        config = import ./packages/nvf.nix { inherit pkgs; };
+        options = {};
+        config = import ./packages/nvf.nix {inherit pkgs;};
       };
 
       customNeovim = inputs.nvf.lib.neovimConfiguration {
         inherit pkgs;
-        modules = [ configNvf ];
+        modules = [configNvf];
       };
-    in
-    {
+    in {
       homeConfigurations = {
         ewen = inputs.home-manager.lib.homeManagerConfiguration {
           inherit pkgs;

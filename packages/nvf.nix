@@ -1,108 +1,105 @@
-{ pkgs
-, ...
-}: {
+{pkgs, ...}: {
   vim = {
     keymaps = [
       {
         key = "<leader>lF";
-        mode = [ "n" ];
+        mode = ["n"];
         action = ":!nix fmt\n";
         desc = "Format all project";
       }
 
       {
         key = "<leader>G";
-        mode = [ "n" ];
+        mode = ["n"];
         action = ":Neogit\n";
         desc = "Open neogit";
       }
 
       {
         key = "<leader><leader>h";
-        mode = [ "n" ];
+        mode = ["n"];
         action = ":SmartCursorMoveLeft\n";
       }
 
       {
         key = "<leader><leader>l";
-        mode = [ "n" ];
+        mode = ["n"];
         action = ":SmartCursorMoveRight\n";
       }
 
       {
         key = "<leader><leader>j";
-        mode = [ "n" ];
+        mode = ["n"];
         action = ":SmartCursorMoveDown\n";
       }
 
       {
         key = "<leader><leader>k";
-        mode = [ "n" ];
+        mode = ["n"];
         action = ":SmartCursorMoveUp\n";
       }
 
       {
         key = "<leader><leader>H";
-        mode = [ "n" ];
+        mode = ["n"];
         action = ":SmartResizeLeft ";
       }
 
       {
         key = "<leader><leader>L";
-        mode = [ "n" ];
+        mode = ["n"];
         action = ":SmartResizeRight ";
       }
 
       {
         key = "<leader><leader>J";
-        mode = [ "n" ];
+        mode = ["n"];
         action = ":SmartResizeDown ";
       }
 
       {
         key = "<leader><leader>K";
-        mode = [ "n" ];
+        mode = ["n"];
         action = ":SmartResizeUp ";
       }
 
       {
         key = "<leader><leader><C-h>";
-        mode = [ "n" ];
+        mode = ["n"];
         action = ":SmartSwapLeft\n";
       }
 
       {
         key = "<leader><leader><C-l>";
-        mode = [ "n" ];
+        mode = ["n"];
         action = ":SmartSwapRight\n";
       }
 
       {
         key = "<leader><leader><C-k>";
-        mode = [ "n" ];
+        mode = ["n"];
         action = ":SmartSwapUp\n";
       }
 
       {
         key = "<leader><leader><C-j>";
-        mode = [ "n" ];
+        mode = ["n"];
         action = ":SmartSwapDown\n";
       }
 
       {
         key = "<leader><leader>n";
-        mode = [ "n" ];
+        mode = ["n"];
         action = ":vsplit\n";
         desc = "Ouvrir un split horizontal";
       }
 
       {
         key = "<leader><leader>v";
-        mode = [ "n" ];
+        mode = ["n"];
         action = ":split\n";
         desc = "Ouvrir un split vertical";
       }
-
     ];
 
     startPlugins = [
@@ -327,7 +324,7 @@
           nix = "110";
           ruby = "120";
           java = "130";
-          go = [ "90" "130" ];
+          go = ["90" "130"];
         };
       };
       fastaction.enable = true;

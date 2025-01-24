@@ -1,7 +1,5 @@
 {
-
   description = ""; #à remplir
-
 
   inputs = {
     flake-utils = {
@@ -9,10 +7,9 @@
     };
   };
 
-
-  outputs = { nixpkgs, ... }@inputs:
-    inputs.flake-utils.lib.eachDefaultSystem (system:
-      let
+  outputs = {nixpkgs, ...} @ inputs:
+    inputs.flake-utils.lib.eachDefaultSystem (
+      system: let
         pkgs = import nixpkgs {
           inherit system;
         };
@@ -31,14 +28,11 @@
             '';
           };
         };
-      in
-      {
-
+      in {
         formatter = pkgs.nixpkgs-fmt;
 
         devShells = {
           default = pkgs.mkShell {
-
             packages = [
               pkgs.nodejs_latest
               pkgs.nodePackages.pnpm
@@ -51,7 +45,6 @@
               mylib.update
               mylib.install_deps
             ];
-
 
             shellHook = ''
               echo "shell pour " #à remplir
