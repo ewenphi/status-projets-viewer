@@ -28,6 +28,9 @@
   scripts.hello.exec = ''
     echo hello from $GREET
   '';
+  scripts.fmt.exec = ''
+    alejandra .
+  '';
 
   enterShell = ''
     hello
