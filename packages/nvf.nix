@@ -190,8 +190,8 @@
       r.enable = false;
       gleam.enable = false;
       dart = {
-        enable = true;
-        flutter-tools.enable = true;
+        enable = false;
+        flutter-tools.enable = false;
       };
       ocaml.enable = false;
       elixir.enable = false;
