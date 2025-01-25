@@ -166,7 +166,7 @@
       java.enable = true;
       ts = {
         enable = true;
-        extraDiagnostics.enable = false;
+        extraDiagnostics.enable = true;
         format.enable = true;
       };
       go.enable = true;

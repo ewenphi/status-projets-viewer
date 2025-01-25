@@ -52,8 +52,7 @@ in {
       pkgs.anytype
       pkgs.pdfpc
 
-      pkgs.docker
-      pkgs.docker-buildx
+      pkgs.podman
       pkgs.nixpacks
 
       (config.lib.nixGL.wrap pkgs.kitty)
