@@ -2,10 +2,17 @@
   vim = {
     keymaps = [
       {
-        key = "<leader>lF";
+        key = "<leader>lD";
         mode = ["n"];
-        action = ":!nix fmt\n";
-        desc = "Format all project";
+        action = ":lua vim.diagnostic.enable(false)\n";
+        desc = "Disable diagnostocs";
+      }
+
+      {
+        key = "<leader>lE";
+        mode = ["n"];
+        action = ":lua vim.diagnostic.enable()\n";
+        desc = "Enable diagnostocs";
       }
 
       {
