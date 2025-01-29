@@ -38,6 +38,8 @@
       pkgs.unzip
       pkgs.wl-clipboard
       pkgs.auto-updater
+      pkgs.commitizen
+      pkgs.pre-commit
       pkgs.devenv
       customNeovim.neovim
     ];
