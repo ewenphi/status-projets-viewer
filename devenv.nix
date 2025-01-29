@@ -16,6 +16,7 @@
 
   git-hooks.hooks = {
     alejandra.enable = true;
+    commitizen.enable = true;
   };
 
   # https://devenv.sh/processes/
