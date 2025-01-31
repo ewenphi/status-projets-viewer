@@ -18,7 +18,7 @@
 #define COMMAND_DIFF                                                           \
   "cd ~/home-config && git fetch && git diff --quiet origin/main"
 
-#define COMMAND_UPDATE "cd ~/home-config && nix flake update --commit-lock-file"
+#define COMMAND_UPDATE "cd ~/home-config && nix flake update"
 
 #define COMMAND_BUILD "nh home switch -a"
 
