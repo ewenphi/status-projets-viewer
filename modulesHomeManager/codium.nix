@@ -22,12 +22,16 @@
         pkgs.vscode-extensions.ms-python.python
         pkgs.vscode-extensions.ms-python.pylint
         pkgs.vscode-extensions.ms-python.black-formatter
+        pkgs.vscode-extensions.charliermarsh.ruff
 
         #go
         pkgs.vscode-extensions.golang.go
 
         #rust
         pkgs.vscode-extensions.rust-lang.rust-analyzer
+
+        #c
+        pkgs.vscode-extensions.llvm-vs-code-extensions.vscode-clangd
 
         #nix
         pkgs.vscode-extensions.jnoortheen.nix-ide
