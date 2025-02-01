@@ -4,8 +4,7 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
 
-    nixpkgs-godot4-1.url =
-      "github:nixos/nixpkgs?rev=459104f841356362bfb9ce1c788c1d42846b2454";
+    nixpkgs-godot4-1.url = "github:nixos/nixpkgs?rev=459104f841356362bfb9ce1c788c1d42846b2454";
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -25,19 +24,13 @@
 
     flake-utils.url = "github:numtide/flake-utils";
 
-    treefmt-nix = {
-      url = "github:numtide/treefmt-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     nvf = {
       url = "github:notashelf/nvf";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
     nixgl = {
-      url =
-        "github:nix-community/nixGL/310f8e49a149e4c9ea52f1adf70cdc768ec53f8a";
+      url = "github:nix-community/nixGL/310f8e49a149e4c9ea52f1adf70cdc768ec53f8a";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -54,42 +47,51 @@
     };
   };
 
-  outputs = { self, nixpkgs, ... }@inputs:
-    inputs.flake-utils.lib.eachDefaultSystem
-      (system:
-        let
-          pkgs = import nixpkgs { inherit system; };
+  outputs =
+    { self, nixpkgs, ... }@inputs:
+    inputs.flake-utils.lib.eachDefaultSystem (
+      system:
+      let
+        pkgs = import nixpkgs { inherit system; };
 
-          treefmtEval = inputs.treefmt-nix.lib.evalModule pkgs ./treefmt.nix;
+        treefmtEval = inputs.treefmt-nix.lib.evalModule pkgs ./treefmt.nix;
 
-          configNvf = {
-            options = { };
-            config = import ./packages/nvf.nix { inherit pkgs; };
-          };
+        configNvf = {
+          options = { };
+          config = import ./packages/nvf.nix { inherit pkgs; };
+        };
 
-          customNeovim = inputs.nvf.lib.neovimConfiguration {
-            inherit pkgs;
-            modules = [ configNvf ];
-          };
-        in
-        {
-          formatter = treefmtEval.config.build.wrapper;
+        customNeovim = inputs.nvf.lib.neovimConfiguration {
+          inherit pkgs;
+          modules = [ configNvf ];
+        };
+      in
+      {
+        formatter = treefmtEval.config.build.wrapper;
 
-          checks = { formatting = treefmtEval.config.build.check self; };
+        checks = {
+          formatting = treefmtEval.config.build.check self;
+        };
 
-          packages.myNvim = customNeovim.neovim;
-        }) // inputs.flake-utils.lib.eachDefaultSystemPassThrough (system:
+        packages.myNvim = customNeovim.neovim;
+      }
+    )
+    // inputs.flake-utils.lib.eachDefaultSystemPassThrough (
+      system:
       let
         overlay = _final: _prev: {
           inherit (inputs.nixpkgs-godot4-1.legacyPackages.${pkgs.system})
-            godot_4;
+            godot_4
+            ;
           nix-search = inputs.nix-search.packages.${pkgs.system}.default;
           auto-updater = inputs.auto-updater.packages.${pkgs.system}.default;
         };
         pkgs = import nixpkgs {
           inherit system;
 
-          config = { allowUnfree = true; };
+          config = {
+            allowUnfree = true;
+          };
 
           overlays = [ overlay ];
         };
@@ -157,5 +159,6 @@
             welcomeText = "python template initialized";
           };
         };
-      });
+      }
+    );
 }
