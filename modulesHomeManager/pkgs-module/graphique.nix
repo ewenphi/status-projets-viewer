@@ -1,12 +1,21 @@
-{
-  pkgs,
-  lib,
-  config,
-  inputs,
-  ...
-}: let
-  myTexLive =
-    pkgs.texliveFull.withPackages (ps: with ps; [movie15]);
+{ pkgs, lib, config, inputs, ... }:
+let
+  myTexLive = pkgs.texliveFull.withPackages (ps: with ps; [ movie15 ]);
+  myCodium = pkgs.vscode-with-extensions.override {
+    vscode = pkgs.vscodium;
+    vscodeExtensions = [
+
+      #javascript (javascript et typescript built-in)
+      pkgs.vscode-extensions.esbenp.prettier-vscode
+      pkgs.vscode-extensions.dbaeumer.vscode-eslint
+
+      #nix
+      pkgs.vscode-extensions.jnoortheen.nix-ide
+
+      #comments
+      pkgs.vscode-extensions.gruntfuggly.todo-tree
+    ];
+  };
 in {
   options = {
     graphique.enable = lib.mkEnableOption "install graphic packages module";
@@ -16,10 +25,12 @@ in {
     nixGL = {
       inherit (inputs.nixgl) packages;
       defaultWrapper = "mesa";
-      installScripts = ["mesa"];
+      installScripts = [ "mesa" ];
     };
 
     home.packages = [
+      myCodium
+
       pkgs.discord
       pkgs.bugdom
       pkgs.dolphin-emu

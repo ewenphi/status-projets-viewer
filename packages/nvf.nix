@@ -1,118 +1,141 @@
-{pkgs, ...}: {
+{ pkgs, ... }: {
   vim = {
     keymaps = [
       {
         key = "<leader>lD";
-        mode = ["n"];
-        action = ":lua vim.diagnostic.enable(false)\n";
+        mode = [ "n" ];
+        action = ''
+          :lua vim.diagnostic.enable(false)
+        '';
         desc = "Disable diagnostocs";
       }
 
       {
         key = "<leader>lE";
-        mode = ["n"];
-        action = ":lua vim.diagnostic.enable()\n";
+        mode = [ "n" ];
+        action = ''
+          :lua vim.diagnostic.enable()
+        '';
         desc = "Enable diagnostocs";
       }
 
       {
         key = "<leader>G";
-        mode = ["n"];
-        action = ":Neogit\n";
+        mode = [ "n" ];
+        action = ''
+          :Neogit
+        '';
         desc = "Open neogit";
       }
 
       {
         key = "<leader><leader>h";
-        mode = ["n"];
-        action = ":SmartCursorMoveLeft\n";
+        mode = [ "n" ];
+        action = ''
+          :SmartCursorMoveLeft
+        '';
       }
 
       {
         key = "<leader><leader>l";
-        mode = ["n"];
-        action = ":SmartCursorMoveRight\n";
+        mode = [ "n" ];
+        action = ''
+          :SmartCursorMoveRight
+        '';
       }
 
       {
         key = "<leader><leader>j";
-        mode = ["n"];
-        action = ":SmartCursorMoveDown\n";
+        mode = [ "n" ];
+        action = ''
+          :SmartCursorMoveDown
+        '';
       }
 
       {
         key = "<leader><leader>k";
-        mode = ["n"];
-        action = ":SmartCursorMoveUp\n";
+        mode = [ "n" ];
+        action = ''
+          :SmartCursorMoveUp
+        '';
       }
 
       {
         key = "<leader><leader>H";
-        mode = ["n"];
+        mode = [ "n" ];
         action = ":SmartResizeLeft ";
       }
 
       {
         key = "<leader><leader>L";
-        mode = ["n"];
+        mode = [ "n" ];
         action = ":SmartResizeRight ";
       }
 
       {
         key = "<leader><leader>J";
-        mode = ["n"];
+        mode = [ "n" ];
         action = ":SmartResizeDown ";
       }
 
       {
         key = "<leader><leader>K";
-        mode = ["n"];
+        mode = [ "n" ];
         action = ":SmartResizeUp ";
       }
 
       {
         key = "<leader><leader><C-h>";
-        mode = ["n"];
-        action = ":SmartSwapLeft\n";
+        mode = [ "n" ];
+        action = ''
+          :SmartSwapLeft
+        '';
       }
 
       {
         key = "<leader><leader><C-l>";
-        mode = ["n"];
-        action = ":SmartSwapRight\n";
+        mode = [ "n" ];
+        action = ''
+          :SmartSwapRight
+        '';
       }
 
       {
         key = "<leader><leader><C-k>";
-        mode = ["n"];
-        action = ":SmartSwapUp\n";
+        mode = [ "n" ];
+        action = ''
+          :SmartSwapUp
+        '';
       }
 
       {
         key = "<leader><leader><C-j>";
-        mode = ["n"];
-        action = ":SmartSwapDown\n";
+        mode = [ "n" ];
+        action = ''
+          :SmartSwapDown
+        '';
       }
 
       {
         key = "<leader><leader>n";
-        mode = ["n"];
-        action = ":vsplit\n";
+        mode = [ "n" ];
+        action = ''
+          :vsplit
+        '';
         desc = "Ouvrir un split horizontal";
       }
 
       {
         key = "<leader><leader>v";
-        mode = ["n"];
-        action = ":split\n";
+        mode = [ "n" ];
+        action = ''
+          :split
+        '';
         desc = "Ouvrir un split vertical";
       }
     ];
 
-    startPlugins = [
-      pkgs.vimPlugins.neogit
-      pkgs.vimPlugins.smart-splits-nvim
-    ];
+    startPlugins = [ pkgs.vimPlugins.neogit pkgs.vimPlugins.smart-splits-nvim ];
 
     viAlias = true;
     vimAlias = true;
@@ -122,9 +145,7 @@
       logFile = "/tmp/nvim.log";
     };
 
-    spellcheck = {
-      enable = false;
-    };
+    spellcheck = { enable = false; };
 
     lsp = {
       enable = true;
@@ -148,9 +169,7 @@
       };
     };
 
-    options = {
-      tabstop = 4;
-    };
+    options = { tabstop = 4; };
 
     # This section does not include a comprehensive list of available language modules.
     # To list all available language module options, please visit the nvf manual.;
@@ -248,15 +267,9 @@
     autocomplete.nvim-cmp.enable = true;
     runner.run-nvim.enable = true;
 
-    filetree = {
-      neo-tree = {
-        enable = true;
-      };
-    };
+    filetree = { neo-tree = { enable = true; }; };
 
-    tabline = {
-      nvimBufferline.enable = true;
-    };
+    tabline = { nvimBufferline.enable = true; };
 
     treesitter.context.enable = true;
 
@@ -273,22 +286,16 @@
       gitsigns.codeActions.enable = false; # throws an annoying debug message
     };
 
-    minimap = {
-      codewindow.enable = true;
-    };
+    minimap = { codewindow.enable = true; };
 
     dashboard = {
       dashboard-nvim.enable = false;
       alpha.enable = true;
     };
 
-    notify = {
-      nvim-notify.enable = true;
-    };
+    notify = { nvim-notify.enable = true; };
 
-    projects = {
-      project-nvim.enable = true;
-    };
+    projects = { project-nvim.enable = true; };
 
     utility = {
       # icon-picker.enable = true;
@@ -331,19 +338,15 @@
           nix = "110";
           ruby = "120";
           java = "130";
-          go = ["90" "130"];
+          go = [ "90" "130" ];
         };
       };
       fastaction.enable = true;
     };
 
-    session = {
-      nvim-session-manager.enable = false;
-    };
+    session = { nvim-session-manager.enable = false; };
 
-    comments = {
-      comment-nvim.enable = true;
-    };
+    comments = { comment-nvim.enable = true; };
 
     mini = {
       sessions.enable = true;

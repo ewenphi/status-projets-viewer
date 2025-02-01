@@ -1,7 +1,5 @@
-{lib, ...}: {
-  imports = [
-    ../../modulesHomeManager
-  ];
+{ lib, ... }: {
+  imports = [ ../../modulesHomeManager ];
   home-common.enable = true;
   #desactivate pass et gpg sur le serveur
   pass.enable = lib.mkForce false;

@@ -1,26 +1,18 @@
 {
-  description = ""; #à remplir
+  description = ""; # à remplir
 
   inputs = {
-    flake-utils = {
-      url = "github:numtide/flake-utils";
-    };
+    flake-utils = { url = "github:numtide/flake-utils"; };
 
     naersk.url = "github:nix-community/naersk";
   };
 
-  outputs = {
-    self,
-    nixpkgs,
-    ...
-  } @ inputs:
-    inputs.flake-utils.lib.eachDefaultSystem (
-      system: let
-        pkgs = import nixpkgs {
-          inherit system;
-        };
+  outputs = { self, nixpkgs, ... }@inputs:
+    inputs.flake-utils.lib.eachDefaultSystem (system:
+      let
+        pkgs = import nixpkgs { inherit system; };
 
-        naersk' = pkgs.callPackage inputs.naersk {};
+        naersk' = pkgs.callPackage inputs.naersk { };
 
         mylib = {
           fmt = pkgs.writeShellApplication {
@@ -54,7 +46,7 @@
         formatter.pkgs = pkgs.nixpkgs-fmt;
 
         devShells.default = pkgs.mkShell {
-          inputsFrom = [self.packages.${pkgs.system}.default];
+          inputsFrom = [ self.packages.${pkgs.system}.default ];
           packages = [
             #voir la taille des grosses deps
             pkgs.cargo-bloat
@@ -82,9 +74,7 @@
             mylib.install_deps
           ];
 
-          env = {
-            RUST_BACKTRACE = "1";
-          };
+          env = { RUST_BACKTRACE = "1"; };
 
           shellHook = ''
             echo "shell pour " #a remplir
@@ -93,16 +83,17 @@
 
         packages = {
           default = naersk'.buildPackage {
-            nativeBuildInputs = [pkgs.rustc pkgs.cargo];
+            nativeBuildInputs = [ pkgs.rustc pkgs.cargo ];
 
             src = ./.;
 
-            doCheck = true; #pas sûr que ce soit faut par défaut mais on sait jamais
+            doCheck =
+              true; # pas sûr que ce soit faut par défaut mais on sait jamais
 
             meta = with pkgs.stdenv.lib; {
               homepage = "a remplir";
-              licence = licences.MIT; #à remplir
-              mainteners = [mainteners.yvaniak]; #a remplir
+              licence = licences.MIT; # à remplir
+              mainteners = [ mainteners.yvaniak ]; # a remplir
             };
           };
 
@@ -111,9 +102,9 @@
           docker = pkgs.dockerTools.buildLayeredImage {
             name = "remplir";
             tag = "latest";
-            config.Cmd = ["${self.packages.${pkgs.system}.default}/bin/remplir"];
+            config.Cmd =
+              [ "${self.packages.${pkgs.system}.default}/bin/remplir" ];
           };
         };
-      }
-    );
+      });
 }

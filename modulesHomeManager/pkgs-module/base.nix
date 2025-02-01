@@ -1,10 +1,4 @@
-{
-  pkgs,
-  lib,
-  config,
-  customNeovim,
-  ...
-}: {
+{ pkgs, lib, config, customNeovim, ... }: {
   options = {
     base.enable = lib.mkEnableOption "install base packages module";
   };

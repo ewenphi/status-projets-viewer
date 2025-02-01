@@ -1,11 +1,7 @@
-{
-  config,
-  lib,
-  pkgs,
-  ...
-}: {
+{ config, lib, pkgs, ... }: {
   options = {
-    programs-oneliners-cli.enable = lib.mkEnableOption "enable programs oneliners cli module";
+    programs-oneliners-cli.enable =
+      lib.mkEnableOption "enable programs oneliners cli module";
   };
 
   config = lib.mkIf config.programs-oneliners-cli.enable {

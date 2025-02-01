@@ -1,6 +1,1 @@
-{...}: {
-  imports = [
-    ./base.nix
-    ./graphique.nix
-  ];
-}
+{ ... }: { imports = [ ./base.nix ./graphique.nix ]; }

@@ -1,24 +1,12 @@
-{
-  pkgs,
-  lib,
-  config,
-  ...
-}: {
-  options = {
-    git.enable = lib.mkEnableOption "enable git module";
-  };
+{ pkgs, lib, config, ... }: {
+  options = { git.enable = lib.mkEnableOption "enable git module"; };
 
   config = lib.mkIf config.git.enable {
-    home.packages = [
-      pkgs.gitoxide
-    ];
+    home.packages = [ pkgs.gitoxide ];
 
     programs.git = {
       enable = true;
-      ignores = [
-        "*~"
-        "*.swp"
-      ];
+      ignores = [ "*~" "*.swp" ];
       difftastic = {
         enable = true;
         color = "always";

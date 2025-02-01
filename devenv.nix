@@ -1,10 +1,4 @@
-{
-  pkgs,
-  lib,
-  config,
-  inputs,
-  ...
-}: {
+_: {
   # https://devenv.sh/basics/
   env.GREET = "home-config";
 
@@ -14,8 +8,12 @@
   # https://devenv.sh/languages/
   # languages.rust.enable = true;
 
+  languages.nix.enable = true;
+
   git-hooks.hooks = {
-    alejandra.enable = true;
+    nixfmt-classic.enable = true;
+    statix.enable = true;
+    deadnix.enable = true;
     commitizen.enable = true;
   };
 

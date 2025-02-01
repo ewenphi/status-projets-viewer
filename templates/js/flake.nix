@@ -1,18 +1,12 @@
 {
-  description = ""; #à remplir
+  description = ""; # à remplir
 
-  inputs = {
-    flake-utils = {
-      url = "github:numtide/flake-utils";
-    };
-  };
+  inputs = { flake-utils = { url = "github:numtide/flake-utils"; }; };
 
-  outputs = {nixpkgs, ...} @ inputs:
-    inputs.flake-utils.lib.eachDefaultSystem (
-      system: let
-        pkgs = import nixpkgs {
-          inherit system;
-        };
+  outputs = { nixpkgs, ... }@inputs:
+    inputs.flake-utils.lib.eachDefaultSystem (system:
+      let
+        pkgs = import nixpkgs { inherit system; };
 
         mylib = {
           update = pkgs.writeShellApplication {
@@ -51,6 +45,5 @@
             '';
           };
         };
-      }
-    );
+      });
 }
