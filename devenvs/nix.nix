@@ -1,4 +1,5 @@
-_: {
+{ pkgs, ... }:
+{
   languages.nix.enable = true;
 
   git-hooks.hooks = {
@@ -7,6 +8,10 @@ _: {
     deadnix.enable = true;
     commitizen.enable = true;
   };
+
+  packages = [
+    pkgs.nil
+  ];
 
   enterShell = ''
     echo hello from 
