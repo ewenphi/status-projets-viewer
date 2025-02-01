@@ -9,6 +9,6 @@ _: {
   };
 
   enterShell = ''
-    echo hello from home-config
+    echo hello from 
   '';
 }

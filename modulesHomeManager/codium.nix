@@ -1,4 +1,10 @@
-{ config, pkgs, lib, ... }: {
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
+{
   options = {
     codium.enable = lib.mkEnableOption "enable codium with extensions module";
   };
@@ -11,6 +17,17 @@
         #javascript (javascript et typescript built-in)
         pkgs.vscode-extensions.esbenp.prettier-vscode
         pkgs.vscode-extensions.dbaeumer.vscode-eslint
+
+        #python
+        pkgs.vscode-extensions.ms-python.python
+        pkgs.vscode-extensions.ms-python.pylint
+        pkgs.vscode-extensions.ms-python.black-formatter
+
+        #go
+        pkgs.vscode-extensions.golang.go
+
+        #rust
+        pkgs.vscode-extensions.rust-lang.rust-analyzer
 
         #nix
         pkgs.vscode-extensions.jnoortheen.nix-ide
@@ -29,8 +46,33 @@
         pkgs.vscode-extensions.github.vscode-pull-request-github
       ];
       userSettings = {
-        "nix.autoSave" = "on";
-        "nix.enableLanguageServer" = "true";
+        "editor.formatOnSave" = true;
+        "editor.formatOnType" = true;
+
+        "nix.enableLanguageServer" = true;
+        "nix.serverSettings" = {
+          "nil" = {
+            "formatting" = {
+              "command" = [ "nixfmt" ];
+            };
+          };
+        };
+        "nix.formatterPath" = "nixfmt";
+
+        "typescript.inlayHints.functionLikeReturnTypes.enabled" = true;
+        "typescript.inlayHints.parameterNames.enabled" = "all";
+        "typescript.inlayHints.parameterTypes.enabled" = true;
+        "typescript.inlayHints.propertyDeclarationTypes.enabled" = true;
+        "typescript.inlayHints.variableTypes.enabled" = true;
+
+        "go.inlayHints.assignVariableTypes" = true;
+        "go.inlayHints.compositeLiteralFields" = true;
+        "go.inlayHints.compositeLiteralTypes" = true;
+        "go.inlayHints.constantValues" = true;
+        "go.inlayHints.functionTypeParameters" = true;
+        "go.inlayHints.parameterNames" = true;
+        "go.inlayHints.rangeVariableTypes" = true;
+
       };
     };
   };
