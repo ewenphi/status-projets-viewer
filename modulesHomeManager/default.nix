@@ -12,5 +12,6 @@
     ./gnome.nix
     ./nix-options.nix
     ./stylix.nix
+    ./codium.nix
   ];
 }

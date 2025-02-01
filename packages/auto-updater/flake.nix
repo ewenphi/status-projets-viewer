@@ -14,8 +14,9 @@
         [ "x86_64-linux" "aarch64-linux" "x86_64-darwin" "aarch64-darwin" ];
       forEachSupportedSystem = f:
         inputs.nixpkgs.lib.genAttrs supportedSystems
-        (system: f { pkgs = import inputs.nixpkgs { inherit system; }; });
-    in {
+          (system: f { pkgs = import inputs.nixpkgs { inherit system; }; });
+    in
+    {
       packages = forEachSupportedSystem ({ pkgs }: {
         default = pkgs.stdenv.mkDerivation {
           pname = "auto-updater";

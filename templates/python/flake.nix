@@ -20,7 +20,8 @@
           '';
         };
       };
-    in {
+    in
+    {
       formatter.${pkgs.system} = pkgs.nixpkgs-fmt;
 
       devShells.${pkgs.system}.default = pkgs.mkShell {

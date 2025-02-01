@@ -15,5 +15,7 @@
     gnome.enable = true;
 
     stylix-module.enable = true;
+
+    codium.enable = true;
   };
 }

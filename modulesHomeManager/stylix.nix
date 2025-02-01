@@ -8,12 +8,13 @@
   config = lib.mkIf config.stylix-module.enable {
     stylix = {
       enable = true;
-      image = pkgs.fetchFromGitHub {
-        owner = "JaKooLit";
-        repo = "Wallpaper-Bank";
-        rev = "b23f339aed95ce89d987a65b1cfda6bac6a37c98";
-        hash = "sha256-TVYMA+SudPZJQPfGqJ+iwTnqMdMIEUUidrcRazQXOuQ=";
-      } + "/wallpapers/City-Rainy-Night.png";
+      image = pkgs.fetchFromGitHub
+        {
+          owner = "JaKooLit";
+          repo = "Wallpaper-Bank";
+          rev = "b23f339aed95ce89d987a65b1cfda6bac6a37c98";
+          hash = "sha256-TVYMA+SudPZJQPfGqJ+iwTnqMdMIEUUidrcRazQXOuQ=";
+        } + "/wallpapers/City-Rainy-Night.png";
       base16Scheme =
         "${pkgs.base16-schemes}/share/themes/tokyo-night-dark.yaml";
 

@@ -42,7 +42,8 @@
             '';
           };
         };
-      in {
+      in
+      {
         formatter.pkgs = pkgs.nixpkgs-fmt;
 
         devShells.default = pkgs.mkShell {

@@ -22,7 +22,8 @@
             '';
           };
         };
-      in {
+      in
+      {
         formatter = pkgs.nixpkgs-fmt;
 
         devShells = {

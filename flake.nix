@@ -55,42 +55,12 @@
   };
 
   outputs = { self, nixpkgs, ... }@inputs:
-    inputs.flake-utils.lib.eachDefaultSystem (system:
-      let
-        pkgs = import nixpkgs { inherit system; };
-
-        treefmtEval = inputs.treefmt-nix.lib.evalModule pkgs ./treefmt.nix;
-
-        configNvf = {
-          options = { };
-          config = import ./packages/nvf.nix { inherit pkgs; };
-        };
-
-        customNeovim = inputs.nvf.lib.neovimConfiguration {
-          inherit pkgs;
-          modules = [ configNvf ];
-        };
-      in {
-        formatter = treefmtEval.config.build.wrapper;
-
-        checks = { formatting = treefmtEval.config.build.check self; };
-
-        packages.myNvim = customNeovim.neovim;
-      }) // inputs.flake-utils.lib.eachDefaultSystemPassThrough (system:
+    inputs.flake-utils.lib.eachDefaultSystem
+      (system:
         let
-          overlay = _final: _prev: {
-            inherit (inputs.nixpkgs-godot4-1.legacyPackages.${pkgs.system})
-              godot_4;
-            nix-search = inputs.nix-search.packages.${pkgs.system}.default;
-            auto-updater = inputs.auto-updater.packages.${pkgs.system}.default;
-          };
-          pkgs = import nixpkgs {
-            inherit system;
+          pkgs = import nixpkgs { inherit system; };
 
-            config = { allowUnfree = true; };
-
-            overlays = [ overlay ];
-          };
+          treefmtEval = inputs.treefmt-nix.lib.evalModule pkgs ./treefmt.nix;
 
           configNvf = {
             options = { };
@@ -101,58 +71,91 @@
             inherit pkgs;
             modules = [ configNvf ];
           };
-        in {
-          homeConfigurations = {
-            ewen = inputs.home-manager.lib.homeManagerConfiguration {
-              inherit pkgs;
-              extraSpecialArgs = {
-                inherit inputs;
-                inherit system;
-                inherit customNeovim;
-              };
+        in
+        {
+          formatter = treefmtEval.config.build.wrapper;
 
-              modules = [ ./home/ewen/home.nix ];
+          checks = { formatting = treefmtEval.config.build.check self; };
 
-              # Optionally use extraSpecialArgs
-              # to pass through arguments to home.nix
+          packages.myNvim = customNeovim.neovim;
+        }) // inputs.flake-utils.lib.eachDefaultSystemPassThrough (system:
+      let
+        overlay = _final: _prev: {
+          inherit (inputs.nixpkgs-godot4-1.legacyPackages.${pkgs.system})
+            godot_4;
+          nix-search = inputs.nix-search.packages.${pkgs.system}.default;
+          auto-updater = inputs.auto-updater.packages.${pkgs.system}.default;
+        };
+        pkgs = import nixpkgs {
+          inherit system;
+
+          config = { allowUnfree = true; };
+
+          overlays = [ overlay ];
+        };
+
+        configNvf = {
+          options = { };
+          config = import ./packages/nvf.nix { inherit pkgs; };
+        };
+
+        customNeovim = inputs.nvf.lib.neovimConfiguration {
+          inherit pkgs;
+          modules = [ configNvf ];
+        };
+      in
+      {
+        homeConfigurations = {
+          ewen = inputs.home-manager.lib.homeManagerConfiguration {
+            inherit pkgs;
+            extraSpecialArgs = {
+              inherit inputs;
+              inherit system;
+              inherit customNeovim;
             };
 
-            examens = inputs.home-manager.lib.homeManagerConfiguration {
-              inherit pkgs;
-              extraSpecialArgs = {
-                inherit inputs;
-                inherit system;
-              };
+            modules = [ ./home/ewen/home.nix ];
 
-              modules = [ ./home/examens/home.nix ];
-            };
-
-            serveur = inputs.home-manager.lib.homeManagerConfiguration {
-              inherit pkgs;
-              extraSpecialArgs = { inherit inputs; };
-
-              modules = [ ./home/serveur/home.nix ];
-            };
+            # Optionally use extraSpecialArgs
+            # to pass through arguments to home.nix
           };
 
-          templates = {
-            rust = {
-              path = ./templates/rust;
-              description = "my rust template";
-              welcomeText = "rust template initialized";
+          examens = inputs.home-manager.lib.homeManagerConfiguration {
+            inherit pkgs;
+            extraSpecialArgs = {
+              inherit inputs;
+              inherit system;
             };
 
-            js = {
-              path = ./templates/js;
-              description = "my js template";
-              welcomeText = "js template initialized";
-            };
-
-            python = {
-              path = ./templates/python;
-              description = "my python template";
-              welcomeText = "python template initialized";
-            };
+            modules = [ ./home/examens/home.nix ];
           };
-        });
+
+          serveur = inputs.home-manager.lib.homeManagerConfiguration {
+            inherit pkgs;
+            extraSpecialArgs = { inherit inputs; };
+
+            modules = [ ./home/serveur/home.nix ];
+          };
+        };
+
+        templates = {
+          rust = {
+            path = ./templates/rust;
+            description = "my rust template";
+            welcomeText = "rust template initialized";
+          };
+
+          js = {
+            path = ./templates/js;
+            description = "my js template";
+            welcomeText = "js template initialized";
+          };
+
+          python = {
+            path = ./templates/python;
+            description = "my python template";
+            welcomeText = "python template initialized";
+          };
+        };
+      });
 }

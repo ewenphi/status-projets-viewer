@@ -11,7 +11,7 @@ _: {
   languages.nix.enable = true;
 
   git-hooks.hooks = {
-    nixfmt-classic.enable = true;
+    nixpkgs-fmt.enable = true;
     statix.enable = true;
     deadnix.enable = true;
     commitizen.enable = true;
