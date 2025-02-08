@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   vim = {
     keymaps = [
       {
@@ -135,7 +136,10 @@
       }
     ];
 
-    startPlugins = [ pkgs.vimPlugins.neogit pkgs.vimPlugins.smart-splits-nvim ];
+    startPlugins = [
+      pkgs.vimPlugins.neogit
+      pkgs.vimPlugins.smart-splits-nvim
+    ];
 
     viAlias = true;
     vimAlias = true;
@@ -145,7 +149,9 @@
       logFile = "/tmp/nvim.log";
     };
 
-    spellcheck = { enable = false; };
+    spellcheck = {
+      enable = false;
+    };
 
     lsp = {
       enable = true;
@@ -169,7 +175,9 @@
       };
     };
 
-    options = { tabstop = 4; };
+    options = {
+      tabstop = 4;
+    };
 
     # This section does not include a comprehensive list of available language modules.
     # To list all available language module options, please visit the nvf manual.;
@@ -188,7 +196,7 @@
       clang.enable = true;
       css.enable = true;
       html.enable = true;
-      sql.enable = true;
+      sql.enable = false;
       java.enable = true;
       ts = {
         enable = true;
@@ -198,7 +206,7 @@
       go.enable = true;
       lua.enable = true;
       zig.enable = true;
-      python.enable = true;
+      python.enable = false;
       typst.enable = true;
       rust = {
         enable = true;
@@ -267,9 +275,15 @@
     autocomplete.nvim-cmp.enable = true;
     runner.run-nvim.enable = true;
 
-    filetree = { neo-tree = { enable = true; }; };
+    filetree = {
+      neo-tree = {
+        enable = true;
+      };
+    };
 
-    tabline = { nvimBufferline.enable = true; };
+    tabline = {
+      nvimBufferline.enable = true;
+    };
 
     treesitter.context.enable = true;
 
@@ -286,16 +300,22 @@
       gitsigns.codeActions.enable = false; # throws an annoying debug message
     };
 
-    minimap = { codewindow.enable = true; };
+    minimap = {
+      codewindow.enable = true;
+    };
 
     dashboard = {
       dashboard-nvim.enable = false;
       alpha.enable = true;
     };
 
-    notify = { nvim-notify.enable = true; };
+    notify = {
+      nvim-notify.enable = true;
+    };
 
-    projects = { project-nvim.enable = true; };
+    projects = {
+      project-nvim.enable = true;
+    };
 
     utility = {
       # icon-picker.enable = true;
@@ -338,15 +358,22 @@
           nix = "110";
           ruby = "120";
           java = "130";
-          go = [ "90" "130" ];
+          go = [
+            "90"
+            "130"
+          ];
         };
       };
       fastaction.enable = true;
     };
 
-    session = { nvim-session-manager.enable = false; };
+    session = {
+      nvim-session-manager.enable = false;
+    };
 
-    comments = { comment-nvim.enable = true; };
+    comments = {
+      comment-nvim.enable = true;
+    };
 
     mini = {
       sessions.enable = true;
