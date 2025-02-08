@@ -45,6 +45,12 @@
       url = "path:./packages/auto-updater";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    filesort = {
+      url = "github:yvaniak/filesort";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    #fin perso
   };
 
   outputs =
@@ -85,6 +91,7 @@
             ;
           nix-search = inputs.nix-search.packages.${pkgs.system}.default;
           auto-updater = inputs.auto-updater.packages.${pkgs.system}.default;
+          filesort = inputs.filesort.packages.${pkgs.system}.default;
         };
         pkgs = import nixpkgs {
           inherit system;
