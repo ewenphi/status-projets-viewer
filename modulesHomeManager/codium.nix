@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  inputs,
   lib,
   ...
 }:
@@ -17,6 +18,7 @@
         #javascript (javascript et typescript built-in)
         pkgs.vscode-extensions.esbenp.prettier-vscode
         pkgs.vscode-extensions.dbaeumer.vscode-eslint
+        inputs.nix-vscode-extensions.extensions.${pkgs.system}.open-vsx.biomejs.biome
 
         #python
         pkgs.vscode-extensions.ms-python.python

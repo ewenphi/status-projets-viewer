@@ -39,6 +39,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
+
     #perso nix
     auto-updater = {
       # url = "git+https://codeberg.org/Yvaniak/auto-updater";
