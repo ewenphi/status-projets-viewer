@@ -4,8 +4,6 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
 
-    nixpkgs-godot4-1.url = "github:nixos/nixpkgs?rev=459104f841356362bfb9ce1c788c1d42846b2454";
-
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -88,9 +86,6 @@
       system:
       let
         overlay = _final: _prev: {
-          inherit (inputs.nixpkgs-godot4-1.legacyPackages.${pkgs.system})
-            godot_4
-            ;
           nix-search = inputs.nix-search.packages.${pkgs.system}.default;
           auto-updater = inputs.auto-updater.packages.${pkgs.system}.default;
           filesort = inputs.filesort.packages.${pkgs.system}.default;
