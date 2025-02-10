@@ -2,7 +2,6 @@
   pkgs,
   lib,
   config,
-  customNeovim,
   ...
 }:
 {
@@ -41,7 +40,6 @@
       pkgs.commitizen
       pkgs.pre-commit
       pkgs.devenv
-      customNeovim.neovim
     ];
   };
 }
