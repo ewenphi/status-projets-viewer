@@ -44,7 +44,6 @@ in
 
       pkgs.rofi-pass-wayland
       pkgs.nix-search
-      pkgs.comma
 
       pkgs.mate.atril
       myTexLive
