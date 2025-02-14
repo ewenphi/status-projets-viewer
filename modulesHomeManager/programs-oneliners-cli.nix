@@ -1,7 +1,12 @@
-{ config, lib, pkgs, ... }: {
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+{
   options = {
-    programs-oneliners-cli.enable =
-      lib.mkEnableOption "enable programs oneliners cli module";
+    programs-oneliners-cli.enable = lib.mkEnableOption "enable programs oneliners cli module";
   };
 
   config = lib.mkIf config.programs-oneliners-cli.enable {
@@ -9,6 +14,7 @@
       zellij = {
         enable = true;
         settings.theme = "tokyo-night-storm";
+        enableZshIntegration = false;
       };
       taskwarrior = {
         enable = true;
