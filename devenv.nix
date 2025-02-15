@@ -1,19 +1,9 @@
-{ pkgs, ... }:
+{ inputs, ... }:
 {
-  languages.nix.enable = true;
-
-  git-hooks.hooks = {
-    nixfmt-rfc-style.enable = true;
-    statix.enable = true;
-    deadnix.enable = true;
-    commitizen.enable = true;
-  };
-
-  packages = [
-    pkgs.nil
-  ];
+  imports = [ inputs.devenvs.homeManagerModules.devenvs.default ];
+  nix.enable = true;
 
   enterShell = ''
-    echo hello from 
+    echo hello from home-config
   '';
 }
