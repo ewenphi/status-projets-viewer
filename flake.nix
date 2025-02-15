@@ -9,6 +9,14 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    cosmic-manager = {
+      url = "github:HeitorAugustoLN/cosmic-manager";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        home-manager.follows = "home-manager";
+      };
+    };
+
     #packages only
     nix-search = {
       url = "github:diamondburned/nix-search";

@@ -14,6 +14,8 @@
 
     gnome.enable = true;
 
+    cosmic.enable = true;
+
     stylix-module.enable = true;
 
     codium.enable = true;

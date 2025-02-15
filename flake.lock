@@ -84,6 +84,30 @@
         "type": "github"
       }
     },
+    "cosmic-manager": {
+      "inputs": {
+        "flake-parts": "flake-parts",
+        "home-manager": [
+          "home-manager"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1738530569,
+        "narHash": "sha256-7NsVI4RMBS0C8hnkP3pKsjWxdQxVTBb44/Fr1L9LpTg=",
+        "owner": "HeitorAugustoLN",
+        "repo": "cosmic-manager",
+        "rev": "666cecfc1e665fd2a9a9fd675b9de05b7318a1af",
+        "type": "github"
+      },
+      "original": {
+        "owner": "HeitorAugustoLN",
+        "repo": "cosmic-manager",
+        "type": "github"
+      }
+    },
     "filesort": {
       "inputs": {
         "nixpkgs": [
@@ -167,6 +191,27 @@
       }
     },
     "flake-parts": {
+      "inputs": {
+        "nixpkgs-lib": [
+          "cosmic-manager",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1736143030,
+        "narHash": "sha256-+hu54pAoLDEZT9pjHlqL9DNzWz0NbUn8NEAHP7PQPzU=",
+        "owner": "hercules-ci",
+        "repo": "flake-parts",
+        "rev": "b905f6fc23a9051a6e1b741e1438dbfc0634c6de",
+        "type": "github"
+      },
+      "original": {
+        "owner": "hercules-ci",
+        "repo": "flake-parts",
+        "type": "github"
+      }
+    },
+    "flake-parts_2": {
       "inputs": {
         "nixpkgs-lib": "nixpkgs-lib"
       },
@@ -623,7 +668,7 @@
     },
     "nvf": {
       "inputs": {
-        "flake-parts": "flake-parts",
+        "flake-parts": "flake-parts_2",
         "flake-utils": "flake-utils_5",
         "mnw": "mnw",
         "nil": "nil",
@@ -650,6 +695,7 @@
     "root": {
       "inputs": {
         "auto-updater": "auto-updater",
+        "cosmic-manager": "cosmic-manager",
         "filesort": "filesort",
         "flake-utils": "flake-utils",
         "home-manager": "home-manager",

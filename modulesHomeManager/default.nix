@@ -1,4 +1,5 @@
-{ ... }: {
+{ ... }:
+{
   imports = [
     ./cli-apps
     ./tools
@@ -13,5 +14,6 @@
     ./nix-options.nix
     ./stylix.nix
     ./codium.nix
+    ./cosmic.nix
   ];
 }
