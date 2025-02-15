@@ -177,6 +177,12 @@
             welcomeText = "python template initialized";
           };
         };
+
+        homeManagerModules = {
+          devenvs = {
+            c = import ./devenvs/c.nix;
+          };
+        };
       }
     );
 }
