@@ -2,6 +2,7 @@
   config,
   lib,
   inputs,
+  pkgs,
   ...
 }:
 {
@@ -20,28 +21,29 @@
       cosmic-files.enable = true;
       cosmic-player.enable = true;
       cosmic-store.enable = true;
-      cosmic-term.enable = true;
-      cosmic-term.profiles = [
-        {
-          command = "bash";
-          hold = false;
-          is_default = true;
-          name = "Default";
-          syntax_theme_dark = "COSMIC Dark";
-          syntax_theme_light = "COSMIC Light";
-          tab_title = "Default";
-          working_directory = "/home/user";
-        }
-        {
-          command = "bash";
-          hold = false;
-          is_default = false;
-          name = "New Profile";
-          syntax_theme_dark = "Catppuccin Mocha";
-          syntax_theme_light = "Catppuccin Latte";
-          tab_title = "New Profile";
-        }
-      ];
+      cosmic-store.package = config.lib.nixGL.wrap pkgs.cosmic-store;
+      cosmic-term = {
+        enable = true;
+        cosmic-term.package = config.lib.nixGL.wrap pkgs.cosmic-term;
+        cosmic-term.profiles = [
+          {
+            hold = false;
+            is_default = true;
+            name = "Default";
+            syntax_theme_dark = "COSMIC Dark";
+            syntax_theme_light = "COSMIC Light";
+            tab_title = "Default";
+          }
+          {
+            hold = false;
+            is_default = false;
+            name = "New Profile";
+            syntax_theme_dark = "Catppuccin Mocha";
+            syntax_theme_light = "Catppuccin Latte";
+            tab_title = "New Profile";
+          }
+        ];
+      };
       forecast.enable = true;
       tasks.enable = true;
     };
