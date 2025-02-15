@@ -24,8 +24,8 @@
       cosmic-store.package = config.lib.nixGL.wrap pkgs.cosmic-store;
       cosmic-term = {
         enable = true;
-        cosmic-term.package = config.lib.nixGL.wrap pkgs.cosmic-term;
-        cosmic-term.profiles = [
+        package = config.lib.nixGL.wrap pkgs.cosmic-term;
+        profiles = [
           {
             hold = false;
             is_default = true;
