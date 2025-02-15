@@ -65,13 +65,11 @@
   };
 
   outputs =
-    { self, nixpkgs, ... }@inputs:
+    { nixpkgs, ... }@inputs:
     inputs.flake-utils.lib.eachDefaultSystem (
       system:
       let
-        pkgs = import nixpkgs { inherit system; };
-
-        treefmtEval = inputs.treefmt-nix.lib.evalModule pkgs ./treefmt.nix;
+        pkgs = import inputs.nixpkgs { inherit system; };
 
         configNvf = {
           options = { };
@@ -84,12 +82,6 @@
         };
       in
       {
-        formatter = treefmtEval.config.build.wrapper;
-
-        checks = {
-          formatting = treefmtEval.config.build.check self;
-        };
-
         packages.myNvim = customNeovim.neovim;
       }
     )
@@ -101,7 +93,7 @@
           auto-updater = inputs.auto-updater.packages.${pkgs.system}.default;
           filesort = inputs.filesort.packages.${pkgs.system}.default;
         };
-        pkgs = import nixpkgs {
+        pkgs = import inputs.nixpkgs {
           inherit system;
 
           config = {
@@ -155,32 +147,6 @@
             extraSpecialArgs = { inherit inputs; };
 
             modules = [ ./home/serveur/home.nix ];
-          };
-        };
-
-        templates = {
-          rust = {
-            path = ./templates/rust;
-            description = "my rust template";
-            welcomeText = "rust template initialized";
-          };
-
-          js = {
-            path = ./templates/js;
-            description = "my js template";
-            welcomeText = "js template initialized";
-          };
-
-          python = {
-            path = ./templates/python;
-            description = "my python template";
-            welcomeText = "python template initialized";
-          };
-        };
-
-        homeManagerModules = {
-          devenvs = {
-            c = import ./devenvs/c.nix;
           };
         };
       }
