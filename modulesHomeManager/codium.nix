@@ -35,6 +35,12 @@
         #c
         pkgs.vscode-extensions.llvm-vs-code-extensions.vscode-clangd
 
+        #csharp
+        inputs.nix-vscode-extensions.extensions.${pkgs.system}.open-vsx.neikeq.godot-csharp-vscode
+        inputs.nix-vscode-extensions.extensions.${pkgs.system}.vscode-marketplace.ms-dotnettools.csharp
+        inputs.nix-vscode-extensions.extensions.${pkgs.system}.vscode-marketplace.ms-dotnettools.csdevkit
+        inputs.nix-vscode-extensions.extensions.${pkgs.system}.vscode-marketplace.ms-dotnettools.vscode-dotnet-pack
+
         #nix
         pkgs.vscode-extensions.jnoortheen.nix-ide
 
