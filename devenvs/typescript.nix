@@ -25,5 +25,6 @@
   git-hooks.hooks = {
     prettier.enable = true;
     eslint.enable = true;
+    biome.enable = true;
   };
 }
