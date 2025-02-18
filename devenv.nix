@@ -1,6 +1,6 @@
 { inputs, ... }:
 {
-  imports = [ inputs.devenvs.homeManagerModules.devenvs.default ];
+  imports = [ inputs.devenvs.devenvModules.devenvs.default ];
   nix.enable = true;
 
   enterShell = ''
