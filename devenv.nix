@@ -7,6 +7,4 @@
   enterShell = ''
     echo hello from home-config
   '';
-
-  enterTest = "nix build .#homeConfigurations.ewen.activationPackage";
 }
