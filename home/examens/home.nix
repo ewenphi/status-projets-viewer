@@ -1,6 +1,8 @@
 { pkgs, lib, ... }:
-let myTexLive = pkgs.texliveFull.withPackages (ps: with ps; [ movie15 ]);
-in {
+let
+  myTexLive = pkgs.texliveFull.withPackages (ps: with ps; [ movie15 ]);
+in
+{
   imports = [ ../../modulesHomeManager ];
 
   home-common.enable = true;

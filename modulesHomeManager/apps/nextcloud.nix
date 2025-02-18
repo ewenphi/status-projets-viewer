@@ -1,4 +1,5 @@
-{ lib, config, ... }: {
+{ lib, config, ... }:
+{
   options = {
     nextcloud.enable = lib.mkEnableOption "enable nextcloud module";
   };

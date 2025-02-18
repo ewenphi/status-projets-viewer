@@ -1,4 +1,5 @@
-{ config, lib, ... }: {
+{ config, lib, ... }:
+{
   options = {
     home-common.enable = lib.mkEnableOption "enable home-common bundle module";
   };
@@ -75,7 +76,9 @@
       #
       #  /etc/profiles/per-user/ewen/etc/profile.d/hm-session-vars.sh
       #
-      sessionVariables = { EDITOR = "nvim"; };
+      sessionVariables = {
+        EDITOR = "nvim";
+      };
     };
     programs.home-manager.enable = true;
   };

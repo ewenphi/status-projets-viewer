@@ -1,4 +1,5 @@
-{ lib, ... }: {
+{ lib, ... }:
+{
   imports = [ ../../modulesHomeManager ];
   home-common.enable = true;
   #desactivate pass et gpg sur le serveur
