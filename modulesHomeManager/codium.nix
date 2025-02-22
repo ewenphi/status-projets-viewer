@@ -56,6 +56,9 @@
         #github
         pkgs.vscode-extensions.github.vscode-github-actions
         pkgs.vscode-extensions.github.vscode-pull-request-github
+
+        #deps
+        inputs.nix-vscode-extensions.extensions.${pkgs.system}.open-vsx.fill-labs.dependi
       ];
       userSettings = {
         "editor.formatOnSave" = true;
