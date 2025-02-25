@@ -14,80 +14,89 @@
     programs.vscode = {
       enable = true;
       package = pkgs.vscodium;
-      extensions = [
-        #javascript (javascript et typescript built-in)
-        pkgs.vscode-extensions.esbenp.prettier-vscode
-        pkgs.vscode-extensions.dbaeumer.vscode-eslint
-        inputs.nix-vscode-extensions.extensions.${pkgs.system}.open-vsx.biomejs.biome
+      profiles.default = {
+        extensions = [
+          #javascript (javascript et typescript built-in)
+          pkgs.vscode-extensions.esbenp.prettier-vscode
+          pkgs.vscode-extensions.dbaeumer.vscode-eslint
+          inputs.nix-vscode-extensions.extensions.${pkgs.system}.open-vsx.biomejs.biome
 
-        #python
-        pkgs.vscode-extensions.ms-python.python
-        pkgs.vscode-extensions.ms-python.pylint
-        pkgs.vscode-extensions.ms-python.black-formatter
-        pkgs.vscode-extensions.charliermarsh.ruff
+          #python
+          pkgs.vscode-extensions.ms-python.python
+          pkgs.vscode-extensions.ms-python.pylint
+          pkgs.vscode-extensions.ms-python.black-formatter
+          pkgs.vscode-extensions.charliermarsh.ruff
 
-        #go
-        pkgs.vscode-extensions.golang.go
+          #go
+          pkgs.vscode-extensions.golang.go
 
-        #rust
-        pkgs.vscode-extensions.rust-lang.rust-analyzer
+          #rust
+          pkgs.vscode-extensions.rust-lang.rust-analyzer
 
-        #c
-        pkgs.vscode-extensions.llvm-vs-code-extensions.vscode-clangd
+          #c
+          pkgs.vscode-extensions.llvm-vs-code-extensions.vscode-clangd
 
-        #csharp
-        inputs.nix-vscode-extensions.extensions.${pkgs.system}.open-vsx.neikeq.godot-csharp-vscode
-        inputs.nix-vscode-extensions.extensions.${pkgs.system}.vscode-marketplace.ms-dotnettools.csharp
-        inputs.nix-vscode-extensions.extensions.${pkgs.system}.vscode-marketplace.ms-dotnettools.csdevkit
-        inputs.nix-vscode-extensions.extensions.${pkgs.system}.vscode-marketplace.ms-dotnettools.vscode-dotnet-pack
+          #csharp
+          inputs.nix-vscode-extensions.extensions.${pkgs.system}.open-vsx.neikeq.godot-csharp-vscode
+          inputs.nix-vscode-extensions.extensions.${pkgs.system}.vscode-marketplace.ms-dotnettools.csharp
+          inputs.nix-vscode-extensions.extensions.${pkgs.system}.vscode-marketplace.ms-dotnettools.csdevkit
+          inputs.nix-vscode-extensions.extensions.${pkgs.system}.vscode-marketplace.ms-dotnettools.vscode-dotnet-pack
 
-        #nix
-        pkgs.vscode-extensions.jnoortheen.nix-ide
+          #nix
+          pkgs.vscode-extensions.jnoortheen.nix-ide
+          inputs.nix-vscode-extensions.extensions.x86_64-linux.open-vsx.pinage404.nix-extension-pack
 
-        #yaml
-        pkgs.vscode-extensions.redhat.vscode-yaml
+          #yaml
+          pkgs.vscode-extensions.redhat.vscode-yaml
 
-        #comments
-        pkgs.vscode-extensions.gruntfuggly.todo-tree
+          #comments
+          pkgs.vscode-extensions.gruntfuggly.todo-tree
 
-        #vim keybinds
-        pkgs.vscode-extensions.vscodevim.vim
+          #vim keybinds
+          pkgs.vscode-extensions.vscodevim.vim
 
-        #github
-        pkgs.vscode-extensions.github.vscode-github-actions
-        pkgs.vscode-extensions.github.vscode-pull-request-github
+          #github
+          pkgs.vscode-extensions.github.vscode-github-actions
+          pkgs.vscode-extensions.github.vscode-pull-request-github
 
-        #deps
-        inputs.nix-vscode-extensions.extensions.${pkgs.system}.open-vsx.fill-labs.dependi
-      ];
-      userSettings = {
-        "editor.formatOnSave" = true;
-        "editor.formatOnType" = true;
+          #deps
+          inputs.nix-vscode-extensions.extensions.${pkgs.system}.open-vsx.fill-labs.dependi
 
-        "nix.enableLanguageServer" = true;
-        "nix.serverSettings" = {
-          "nil" = {
-            "formatting" = {
-              "command" = [ "nixfmt" ];
+          #editorconfig
+          inputs.nix-vscode-extensions.extensions.x86_64-linux.open-vsx.editorconfig.editorconfig
+
+          #lazygit
+          inputs.nix-vscode-extensions.extensions.x86_64-linux.open-vsx.chaitanyashahare.lazygit
+        ];
+        userSettings = {
+          "editor.formatOnSave" = true;
+          "editor.formatOnType" = true;
+
+          "nix.enableLanguageServer" = true;
+          "nix.serverSettings" = {
+            "nil" = {
+              "formatting" = {
+                "command" = [ "nixfmt" ];
+              };
             };
           };
+          "nix.formatterPath" = "nixfmt";
+
+          "typescript.inlayHints.functionLikeReturnTypes.enabled" = true;
+          "typescript.inlayHints.parameterNames.enabled" = "all";
+          "typescript.inlayHints.parameterTypes.enabled" = true;
+          "typescript.inlayHints.propertyDeclarationTypes.enabled" = true;
+          "typescript.inlayHints.variableTypes.enabled" = true;
+
+          "go.inlayHints.assignVariableTypes" = true;
+          "go.inlayHints.compositeLiteralFields" = true;
+          "go.inlayHints.compositeLiteralTypes" = true;
+          "go.inlayHints.constantValues" = true;
+          "go.inlayHints.functionTypeParameters" = true;
+          "go.inlayHints.parameterNames" = true;
+          "go.inlayHints.rangeVariableTypes" = true;
+
         };
-        "nix.formatterPath" = "nixfmt";
-
-        "typescript.inlayHints.functionLikeReturnTypes.enabled" = true;
-        "typescript.inlayHints.parameterNames.enabled" = "all";
-        "typescript.inlayHints.parameterTypes.enabled" = true;
-        "typescript.inlayHints.propertyDeclarationTypes.enabled" = true;
-        "typescript.inlayHints.variableTypes.enabled" = true;
-
-        "go.inlayHints.assignVariableTypes" = true;
-        "go.inlayHints.compositeLiteralFields" = true;
-        "go.inlayHints.compositeLiteralTypes" = true;
-        "go.inlayHints.constantValues" = true;
-        "go.inlayHints.functionTypeParameters" = true;
-        "go.inlayHints.parameterNames" = true;
-        "go.inlayHints.rangeVariableTypes" = true;
-
       };
     };
   };
