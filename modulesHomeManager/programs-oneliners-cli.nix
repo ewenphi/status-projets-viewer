@@ -21,6 +21,15 @@
         dataLocation = "$HOME/Nextcloud/task";
         package = pkgs.taskwarrior3;
       };
+      gh = {
+        enable = true;
+        extensions = [
+          pkgs.gh-eco
+          pkgs.gh-i
+          pkgs.gh-s
+          pkgs.gh-f
+        ];
+      };
     };
   };
 }
