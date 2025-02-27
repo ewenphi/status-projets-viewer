@@ -12,7 +12,7 @@
   config = lib.mkIf config.custom.enable {
     home.packages = [
       pkgs.filesort
-      pkgs.auto-updater
+      (pkgs.callPackage ./../../packages/auto-updater { })
     ];
   };
 }

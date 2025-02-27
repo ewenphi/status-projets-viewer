@@ -1,11 +1,32 @@
-(import (
-  let
-    lock = builtins.fromJSON (builtins.readFile ./flake.lock);
-  in
-  fetchTarball {
-    url =
-      lock.nodes.flake-compat.locked.url
-        or "https://github.com/edolstra/flake-compat/archive/${lock.nodes.flake-compat.locked.rev}.tar.gz";
-    sha256 = lock.nodes.flake-compat.locked.narHash;
-  }
-) { src = ./.; }).defaultNix
+{
+  stdenv,
+  meson,
+  ninja,
+  pkg-config,
+  curlMinimal,
+  jq,
+  git,
+  nh,
+  ...
+}:
+
+stdenv.mkDerivation {
+  pname = "auto-updater";
+  version = "0.1.2.2.1";
+  nativeBuildInputs = [
+    meson
+    ninja
+    pkg-config
+    curlMinimal
+    jq
+  ];
+  buildInputs = [
+    git
+    nh
+    curlMinimal
+    jq
+  ];
+  src = ./src;
+  #meson
+  mesonBuildType = "custom";
+}

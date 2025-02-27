@@ -29,27 +29,7 @@
       packages = forEachSupportedSystem (
         { pkgs }:
         {
-          default = pkgs.stdenv.mkDerivation {
-            pname = "auto-updater";
-            version = "0.1.2.2.1";
-            nativeBuildInputs = [
-              pkgs.meson
-              pkgs.ninja
-              pkgs.pkg-config
-              pkgs.curlMinimal
-              pkgs.jq
-            ];
-            buildInputs = [
-              pkgs.git
-              pkgs.nh
-              pkgs.curlMinimal
-              pkgs.jq
-            ];
-            src = ./src;
-            #meson
-            mesonBuildType = "custom";
-          };
-
+          default = pkgs.callPackage ./default.nix { };
           auto-updater = self.packages.${pkgs.system}.default;
         }
       );
