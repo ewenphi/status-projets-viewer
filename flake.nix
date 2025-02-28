@@ -17,8 +17,8 @@
       };
     };
 
-    devenvs.url = "github:yvaniak/devenvs";
-    devenvs.inputs.nixpkgs.follows = "nixpkgs";
+    mydevenvs.url = "github:yvaniak/mydevenvs";
+    mydevenvs.inputs.nixpkgs.follows = "nixpkgs";
 
     #packages only
     nix-search = {
@@ -71,8 +71,8 @@
         "x86_64-darwin"
       ];
       imports = [
-        inputs.devenvs.flakeModule
-        inputs.devenvs.devenv
+        inputs.mydevenvs.flakeModule
+        inputs.mydevenvs.devenv
       ];
 
       perSystem =
@@ -98,14 +98,17 @@
           packages.auto-updater = pkgs.callPackage ./packages/auto-updater { };
 
           devenv.shells.default = {
-            devenvs = {
+            mydevenvs = {
               nix = {
                 enable = true;
                 flake.enable = true;
               };
               c.enable = true;
-              tools.just.enable = true;
-              tools.just.pre-commit.enable = true;
+              tools.just = {
+                enable = true;
+                pre-commit.enable = true;
+                check.enable = true;
+              };
             };
             enterShell = "echo hello from home-config";
           };

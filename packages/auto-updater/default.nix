@@ -1,30 +1,23 @@
 {
-  stdenv,
-  meson,
-  ninja,
-  pkg-config,
-  curlMinimal,
-  jq,
-  git,
-  nh,
+  pkgs ? import <nixpkgs> { },
   ...
 }:
 
-stdenv.mkDerivation {
+pkgs.stdenv.mkDerivation {
   pname = "auto-updater";
   version = "0.1.2.2.1";
   nativeBuildInputs = [
-    meson
-    ninja
-    pkg-config
-    curlMinimal
-    jq
+    pkgs.meson
+    pkgs.ninja
+    pkgs.pkg-config
+    pkgs.curlMinimal
+    pkgs.jq
   ];
   buildInputs = [
-    git
-    nh
-    curlMinimal
-    jq
+    pkgs.git
+    pkgs.nh
+    pkgs.curlMinimal
+    pkgs.jq
   ];
   src = ./src;
   #meson
