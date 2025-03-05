@@ -16,9 +16,13 @@
 #define OUTPUT_SIZE 128
 
 #define COMMAND_DIFF                                                           \
-  "cd ~/home-config && git fetch && git diff --quiet origin/main"
+  "cd ~/projets/coding/home-config && git fetch && git diff --quiet "          \
+  "origin/main"
 
-#define COMMAND_UPDATE "cd ~/home-config && nix flake update"
+#define COMMAND_NEEDS                                                          \
+  "cd ~/projets/coding/home-config && flake-checker -f --no-telemetry"
+
+#define COMMAND_UPDATE "cd ~/projets/coding/home-config && nix flake update"
 
 #define COMMAND_BUILD "nh home switch -a"
 
@@ -112,6 +116,12 @@ void test_lock_file_exists(char *flake, char *flake_lock) {
     exit(EXIT_FAILURE);
   }
   fclose(nixos_dir);
+
+  // test if need to update with flake-checker(maybe needs refactoring)
+  if ((system(COMMAND_NEEDS)) == 0) {
+    printf("\nDon't need it yet\n");
+    exit(EXIT_SUCCESS);
+  }
 
   // teste si le fichier existe
   FILE *lock_file = fopen(flake_lock, "r");
