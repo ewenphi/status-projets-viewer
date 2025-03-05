@@ -16,12 +16,12 @@
       enable = true;
       image =
         pkgs.fetchFromGitHub {
-          owner = "JaKooLit";
-          repo = "Wallpaper-Bank";
-          rev = "b23f339aed95ce89d987a65b1cfda6bac6a37c98";
-          hash = "sha256-TVYMA+SudPZJQPfGqJ+iwTnqMdMIEUUidrcRazQXOuQ=";
+          owner = "decaycs";
+          repo = "wallpapers";
+          rev = "6af325f89ce8c39bc134292f65f51349233c23c0";
+          hash = "sha256-5XVkJQkYkjdSZq3ElbRHFk6xV6slm7HY7ZTCdKPDnGo=";
         }
-        + "/wallpapers/Buildings.png";
+        + "/landscapes/conv-AuroraBorealis.png";
       base16Scheme = "${pkgs.base16-schemes}/share/themes/tokyo-night-dark.yaml";
 
       cursor = {
