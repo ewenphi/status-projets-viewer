@@ -67,6 +67,9 @@
 
           #lazygit
           inputs.nix-vscode-extensions.extensions.x86_64-linux.open-vsx.chaitanyashahare.lazygit
+
+          #meson
+          pkgs.vscode-extensions.mesonbuild.mesonbuild
         ];
         userSettings = {
           "editor.formatOnSave" = true;
