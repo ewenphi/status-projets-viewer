@@ -7,4 +7,4 @@ project(
 
 libcurl = dependency('libcurl')
 
-executable('auto-updater', 'main.c', dependencies: [libcurl], install: true)
+executable('auto-updater', 'src/main.c', dependencies: [libcurl], install: true)

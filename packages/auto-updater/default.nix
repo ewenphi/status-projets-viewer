@@ -1,5 +1,6 @@
 {
   pkgs ? import <nixpkgs> { },
+  lib,
   ...
 }:
 
@@ -10,16 +11,16 @@ pkgs.stdenv.mkDerivation {
     pkgs.meson
     pkgs.ninja
     pkgs.pkg-config
-    pkgs.curlMinimal
-    pkgs.jq
   ];
   buildInputs = [
     pkgs.git
     pkgs.nh
     pkgs.curlMinimal
     pkgs.jq
+    pkgs.flake-checker
   ];
-  src = ./src;
-  #meson
-  mesonBuildType = "custom";
+  src = lib.fileset.toSource {
+    root = ./.;
+    fileset = lib.fileset.union ./src ./meson.build;
+  };
 }
