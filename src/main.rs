@@ -214,6 +214,7 @@ fn main() {
             }
         } else {
             let justfile = &(projet.location.clone() + "/justfile");
+
             let res = Command::new("nix")
                 .args([
                     "develop",
