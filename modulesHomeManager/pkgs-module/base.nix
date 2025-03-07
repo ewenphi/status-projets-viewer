@@ -40,6 +40,7 @@
       pkgs.commitizen
       pkgs.pre-commit
       pkgs.devenv
+      pkgs.git-subrepo
     ];
   };
 }

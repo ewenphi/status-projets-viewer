@@ -20,6 +20,8 @@
     mydevenvs.url = "github:yvaniak/mydevenvs";
     mydevenvs.inputs.nixpkgs.follows = "nixpkgs";
 
+    crane.url = "github:ipetkov/crane";
+
     #packages only
     nix-search = {
       url = "github:diamondburned/nix-search";
@@ -94,8 +96,13 @@
           };
         in
         {
-          packages.myNvim = customNeovim.neovim;
-          packages.auto-updater = pkgs.callPackage ./packages/auto-updater { };
+          packages = {
+            myNvim = customNeovim.neovim;
+            auto-updater = pkgs.callPackage ./packages/auto-updater { };
+            status-projets-viewer = pkgs.callPackage ./packages/status-projets-viewer {
+              inherit (inputs) crane;
+            };
+          };
 
           devenv.shells.default = {
             mydevenvs = {
@@ -116,6 +123,7 @@
           checks = {
             inherit (config.packages) myNvim;
             inherit (config.packages) auto-updater;
+            inherit (config.packages) status-projets-viewer;
             ewen-home = flake.homeConfigurations.ewen.activation-script;
             examens-home = flake.homeConfigurations.examens.activation-script;
             serveur-home = flake.homeConfigurations.serveur.activation-script;
