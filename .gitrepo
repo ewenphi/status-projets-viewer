@@ -1,0 +1,12 @@
+; DO NOT EDIT (unless you know what you are doing)
+;
+; This subdirectory is a git "subrepo", and this file is maintained by the
+; git-subrepo command. See https://github.com/ingydotnet/git-subrepo#readme
+;
+[subrepo]
+	remote = git@github.com:Yvaniak/status-projets-viewer.git
+	branch = main
+	commit = aa2e900d2d3ed0fd56088b867c5fe07a40b29c07
+	parent = 3f758ba0b41ebfdce156cdc4b7f5569891b66e92
+	method = merge
+	cmdver = 0.4.9

@@ -4,11 +4,35 @@
 default:
     just --list
 
+alias b := build
+
+# build the software
+build:
+    cargo build
+
+alias r := run
+
+# run the software
+run: build
+    cargo run
+
 alias p := pre-commit-all
 
 # launch all the pre-commit hooks on all the files
 pre-commit-all:
     pre-commit run --all-files
+
+alias d := docs
+
+# build the docs
+docs:
+    cargo doc
+
+alias br := build-release
+
+# build the software in release mode
+build-release:
+    cargo build --release
 
 alias nc := nix-checks
 
@@ -19,10 +43,10 @@ nix-checks:
 alias a := all
 
 # launch all the steps
-all: pre-commit-all nix-checks
+all: build docs pre-commit-all build-release nix-checks
 
 alias w := watch
 
 # launch all the steps (can be very intense on cpu)
 watch:
-    watchexec just    pre-commit-all
+    watchexec just build  docs pre-commit-all
