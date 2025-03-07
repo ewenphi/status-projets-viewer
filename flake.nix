@@ -5,6 +5,7 @@
     mydevenvs.url = "github:yvaniak/mydevenvs";
     mydevenvs.inputs.nixpkgs.follows = "nixpkgs";
     crane.url = "github:ipetkov/crane";
+    flake-compat.url = "https://flakehub.com/f/edolstra/flake-compat/1.tar.gz";
   };
 
   outputs =
@@ -27,7 +28,7 @@
           ...
         }:
         {
-          packages.default = pkgs.callPackage ./default.nix { inherit (inputs) crane; };
+          packages.default = pkgs.callPackage ./package.nix { inherit (inputs) crane; };
 
           devenv.shells.default = {
             packages =
