@@ -6,7 +6,7 @@
 [subrepo]
 	remote = git@github.com:Yvaniak/status-projets-viewer.git
 	branch = main
-	commit = dd5be5a49ce696f108951504ae0dc828aab7ae05
+	commit = 9311d51c0ebe74c8caf6038a6ff9714eb377fadd
 	parent = 976afa75f4f22257dc6194ba3161e5e4210b623e
 	method = merge
 	cmdver = 0.4.9
