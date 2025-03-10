@@ -195,6 +195,17 @@ fn get_config() -> Config {
     config
 }
 
+struct Resultat {
+    flakechecker: bool,
+    git: bool,
+}
+
+impl Resultat {
+    fn all(&self) -> bool {
+        self.flakechecker && self.git
+    }
+}
+
 fn main() {
     let projets_list: Box<[Projet]> = get_config().projets;
 
@@ -203,14 +214,26 @@ fn main() {
     let first = args.next();
     let just = first.is_some_and(|a| a == "--just");
 
+    let mut global_flakechecker = true;
+    let mut global_git = true;
+
     for projet in projets_list {
         if !just {
             println!("{}", projet.name);
-            let res: bool = flakechecker(projet.clone()) && git(projet);
-            if res {
+            let res: Resultat = Resultat {
+                flakechecker: flakechecker(projet.clone()),
+                git: git(projet),
+            };
+            if res.all() {
                 println!("{}", "all".green());
             } else {
                 println!("{}", "all".red());
+            }
+            if res.git == false {
+                global_git = false;
+            }
+            if res.flakechecker == false {
+                global_flakechecker = false;
             }
         } else {
             let justfile = &(projet.location.clone() + "/justfile");
@@ -237,5 +260,21 @@ fn main() {
                 exit(1);
             }
         }
+    }
+
+    if !just {
+        println!(
+            "Globally :\nflake-checker : {}\ngit : {}",
+            if global_flakechecker {
+                "true".green()
+            } else {
+                "false".red()
+            },
+            if global_git {
+                "true".green()
+            } else {
+                "false".red()
+            },
+        )
     }
 }
