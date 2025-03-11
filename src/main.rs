@@ -229,10 +229,10 @@ fn main() {
             } else {
                 println!("{}", "all".red());
             }
-            if res.git == false {
+            if !res.git {
                 global_git = false;
             }
-            if res.flakechecker == false {
+            if !res.flakechecker {
                 global_flakechecker = false;
             }
         } else {
