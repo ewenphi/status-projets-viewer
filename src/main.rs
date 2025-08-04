@@ -149,7 +149,7 @@ fn get_config() -> Config {
         Err(_) => match std::env::var("HOME") {
             Ok(val) => val + "/.config/",
             Err(e) => {
-                eprintln!("couldn't interpret environment variables for : {}", e);
+                eprintln!("couldn't interpret environment variables for : {e}");
                 exit(1);
             }
         },
@@ -188,7 +188,7 @@ fn get_config() -> Config {
     let config: Config = match toml::from_str(&contents) {
         Ok(config) => config,
         Err(e) => {
-            eprintln!("Could not load config at `{}` for :{}", config_path, e);
+            eprintln!("Could not load config at `{config_path}` for :{e}");
             exit(1);
         }
     };
